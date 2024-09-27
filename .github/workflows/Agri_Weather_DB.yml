@@ -29,7 +29,7 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git config --global user.email hekdms@jbnu.ac.kr
+        git config --global user.email "hekdms@jbnu.ac.kr"
         git add ./Agri_Weather/*.csv
         git commit -m "Update Weather Data - $(TZ='Asia/Seoul' date +'%Y-%m-%d')"
         git push
