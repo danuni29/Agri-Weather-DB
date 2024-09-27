@@ -25,7 +25,7 @@ jobs:
     - name: Run Python Script
       run: python today_Agri_weather.py
       env:
-        MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        MY_GITHUB_TOKEN: ${{ secrets.DANUNI }}
 
     - name: Commit and push changes
       run: |
