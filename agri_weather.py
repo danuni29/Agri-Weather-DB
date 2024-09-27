@@ -22,14 +22,16 @@ def test():
     end_year = 2023
     #
     for [code, start_year,spot] in spot_df[['지점코드', '관측시작일', '지점명']].values:
-
+        print(f'{spot}_{code}.csv')
         if not f'{spot}_{code}.csv' in os.listdir('output'):
-            start_year = int(start_year.split('-')[0])
-            print(f"코드{code} : {start_year}")
-            #
-            # except:
-            #     start_year = 2000
-            #     print(f"코드{code} : {start_year}")
+            print(f'{spot}_{code}.csv', start_year, '없음')
+            try:
+                start_year = int(start_year.split('-')[0])
+            except:
+                start_year = 2000
+
+            # print(f"코드{code} : {start_year}")
+
             df = pd.DataFrame()
 
             for year in range(start_year, end_year + 1):
@@ -44,65 +46,39 @@ def test():
 
                     content = response.text
                     xml_dict = xmltodict.parse(content)
+                    print(xml_dict)
 
 
                     if 'response' in xml_dict and 'body' in xml_dict['response']:
                         content = xml_dict['response']['body']['items']['item']
-
+                        # print(f'response=={response.status_code} : {spot}_{code}.csv')
                         for i in range(len(content)):
                             new_df = pd.DataFrame(content[i], index=[0])
-                            if new_df['temp'].values and new_df['hum'].values and new_df['rain'].values and new_df['wind'].values:
+                            print(new_df)
+
+                            if new_df['temp'].values or new_df['hum'].values:
                                 df = pd.concat([df, new_df])
                                 df.to_csv(f'output/{spot}_{code}.csv', index=False, encoding='utf-8-sig')
+                                print(f'{spot}_{code}.csv 저장완료')
+                            else:
+                                print(f'{spot}_{code}.csv 누락데이터 ')
 
+                    else:
+                        print(f'{response.status_code} : {spot}_{code}.csv')
 
+# 2000 ~ 2023년도 지점별로 받은 데이터 년도별 분류
+def divide_df():
+    path = 'output'
+    for f in os.listdir(path):
+        with open(f'{path}/{f}.csv', 'r', encoding='utf-8-sig') as file:
+            df = pd.read_csv(f'{path}/{f}.csv')
 
-    # print(response.status_code)
-    #
-    # df = pd.DataFrame()
-    # print(response.json())
-    # print(response.json()['data'])
-    # df = pd.concat(df, pd.DataFrame(response.json()['data']))
-    # print(df)
+            if not '2023-12-31' in df['date']:
+                print(f)
+                with open('누락데이터.csv', 'w') as file:
+                    file.write(f"{f.split('_')[1]}")
+            else:
+                for year in range(2000, 2024):
+                    df = df[df['date'] == year].split('-')[0]
+                    df.to_csv(f'{path}/{f.split("_")[1]}_{year}.csv', index=False, encoding='utf-8-sig')
 
-test()
-# def main():
-#
-#     # 과거 기상 관측 데이터 가져오기
-#     url = 'http://apis.data.go.kr/1390802/AgriWeather/WeatherObsrInfo/V2/GnrlWeather/getWeatherYearDayList'
-#     # serviceKey = 'CaNVjajLQjjwRIQMs8QNBr1uV86t3KkH5FT8sbOTcWIpZOyWUZ9VdEze/miJwopWCi4M4ayJAUAnXbTeogRGdA=='
-#     serviceKey = 'cnFWOksdH2rQuZ9YQs2IR3frMjm2kgy8eauRY4ujdTSTvGEeDGXulTzCIJtU7htSZeFnoof4l6RGh3EpVIbo1Q%3D%3D'
-#
-#     params = {
-#         'serviceKey': serviceKey,
-#         'Page_No': 1,
-#         'Page_Size': 100,
-#         'search_Year': '2023',
-#         'obsr_Spot_Code': '210913E001'
-#     }
-#
-#     spot_df = pd.read_csv('obsr_spot_data.csv')
-#     start_year = 1985
-#     end_year = 1985
-#
-#
-#     for code in spot_df['obsr_Spot_Code']:
-#         print(f"코드{code}")
-#         for year in range(start_year, end_year + 1):
-#             params = {
-#                 'serviceKey': serviceKey,
-#                 'Page_No': 1,
-#                 'Page_Size': 100,
-#                 'search_Year': str(year),
-#                 'obsr_Spot_Code': code
-#             }
-#     # try:
-#     response = requests.get(url, params=params, verify=False)
-#     # decoded_content = unquote(response.content.decode("utf-8"))
-#     # print(decoded_content)
-#     print(response.content)
-
-# if __name__ == '__main__':
-#     main()
-
-# test()
