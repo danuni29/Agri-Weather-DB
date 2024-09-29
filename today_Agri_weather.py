@@ -77,10 +77,11 @@ def main():
         # 파일이 존재하면 데이터를 append, 존재하지 않으면 생성
         if os.path.exists(full_path):
             existing_df = pd.read_csv(full_path, encoding='euc-kr')
-            print(existing_df)
-            existing_df = existing_df.drop(existing_df.index[-5:])
-            print(existing_df)
-            combined_df = pd.concat([existing_df, station_df], ignore_index=True)
+            if existing_df.iloc[-1, 2] == now_date:
+                print('데이터가 중복되었습니다.')
+
+            else:
+                combined_df = pd.concat([existing_df, station_df], ignore_index=True)
         else:
             combined_df = station_df
 
