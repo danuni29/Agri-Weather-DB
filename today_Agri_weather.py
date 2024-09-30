@@ -178,16 +178,17 @@ def get_droped_data():
                 file_name = f"{station_df['stn_Name'].iloc[0].replace(' ', '_')}_{code}_{now_year}.csv"
                 full_path = os.path.join(folder_path, file_name)
 
-                # 파일이 존재하면 데이터를 append, 존재하지 않으면 생성
+                ## 파일이 존재하면 데이터를 append, 존재하지 않으면 생성
                 if os.path.exists(full_path):
-                    # 파일이 존재하더라고 빈 날짜 체크하여 자동으로 추가
+                    # 파일이 존재할 때 기존 데이터를 불러옴
                     existing_df = pd.read_csv(full_path, encoding='euc-kr')
-                    existing_df = existing_df.drop(df.index[-1])
-                    print(existing_df)
 
-                    print(f'마지막 행 드랍: {full_path}')
+                    # 기존 데이터와 새로운 데이터 결합
                     combined_df = pd.concat([existing_df, station_df], ignore_index=True)
-                    print(f'빈 데이터 결합 완.: {full_path}')
+
+                    # 중복된 행 제거
+                    combined_df = combined_df.drop_duplicates()
+                    print(f'중복 행 제거 후 데이터 결합 완료: {full_path}')
                     print(combined_df)
                 else:
                     combined_df = station_df
