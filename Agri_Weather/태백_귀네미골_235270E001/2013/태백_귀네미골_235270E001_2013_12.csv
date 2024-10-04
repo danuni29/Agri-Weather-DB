@@ -1,4 +1,4 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
 335,2352700.0,태백 귀네미골,2013-12-01,0.3,3.4,-2.7,75.7,5.9,2.1,8.5,0.0,,10.6,0.0,0.2,1.0,,2013,12,1
 336,2352700.0,태백 귀네미골,2013-12-02,-1.9,1.6,-4.4,75.2,4.6,2.9,11.0,0.0,,9.8,0.0,-1.8,1.0,,2013,12,2
 337,2352700.0,태백 귀네미골,2013-12-03,-0.3,2.7,-2.0,76.8,4.4,2.2,8.3,0.0,,10.1,0.0,-0.4,1.0,,2013,12,3

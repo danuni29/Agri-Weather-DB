@@ -4,17 +4,30 @@ import pandas as pd
 import os
 from datetime import datetime
 import chardet
+import requests
+from io import StringIO
 
 
 app = Flask(__name__)
 
+def detect_encoding(file_content):
+    result = chardet.detect(file_content)
+    return result['encoding']
+def download_csv_from_github(file_url):
+    response = requests.get(file_url)
+    if response.status_code == 200:
+        # 바이너리 데이터를 바로 반환
+        return response.content
+    else:
+        print(f"Failed to download file: {file_url}")
+        return None
+
 @app.route('/AgriWeather', methods=['GET'])
 def download_csv():
     # 파라미터 받아오기
-    start_date = str(request.args.get('start_date')) # ex.20241004
-    end_date = str(request.args.get('end_date')) # ex.20241004
-    station_code = request.args.get('station_code') # ex.477802A001
-
+    start_date = str(request.args.get('start_date'))  # ex. 20241004
+    end_date = str(request.args.get('end_date'))  # ex. 20241004
+    station_code = request.args.get('station_code')  # ex. 477802A001
 
     # 날짜를 datetime 객체로 변환
     start_date = datetime.strptime(start_date, '%Y%m%d')
@@ -22,22 +35,29 @@ def download_csv():
 
     df_list = []
 
-    # Agri_Weather 폴더에서 station_code를 포함하는 폴더를 찾기
-    base_path = './Agri_Weather'
-    target_folder = None
+    # GitHub에서 CSV 파일을 다운로드할 base URL
+    base_url = 'https://raw.githubusercontent.com/danuni29/Agri-Weather-DB/refs/heads/master/Agri_Weather'
+
+    # GitHub에서 station_code를 포함하는 폴더 찾기 (로컬 방식과 유사하게)
+    response = requests.get(base_url)  # 전체 Agri_Weather 폴더 목록을 가져옴
+    print(response)
+    if response.status_code != 200:
+        return "Failed to fetch the folder list from GitHub.", 500
+
+    # 응답 데이터에서 폴더를 추출해야 하는데, 여기서는 HTML에서 station_code가 포함된 폴더를 찾음
+    folders = response.text.splitlines()  # GitHub의 응답을 단순히 라인으로 나눔
     target_folder_name = None
 
-    for folder_name in os.listdir(base_path):
-        folder_path = os.path.join(base_path, folder_name)
-        if os.path.isdir(folder_path) and station_code in folder_name:
-            target_folder = folder_path
+    # station_code를 포함한 폴더를 찾는 로직
+    for folder_name in folders:
+        if station_code in folder_name:
             target_folder_name = folder_name
-
             break
-    # print(target_folder)
 
-    if target_folder is None:
+    if target_folder_name is None:
         return "지역코드가 존재하지 않습니다.", 404
+
+    target_folder_url = f"{base_url}/{target_folder_name}"
 
     # 시작 연도부터 끝 연도까지 반복하면서 필요한 데이터만 읽기
     current_date = start_date
@@ -46,27 +66,31 @@ def download_csv():
         month = current_date.month
 
         # 파일 경로 예시: Agri_Weather/가평군_가평읍_477802A001/2011/가평군_가평읍_477802A001_2011_05.csv
-        folder_path = f'{target_folder}/{year}'
         file_name = f'{target_folder_name}_{year}_{month:02d}.csv'
-        file_path = os.path.join(folder_path, file_name)
-        print(file_name)
+        file_url = f"{target_folder_url}/{year}/{file_name}"
+        print(f"Downloading {file_url}")
+
+        # GitHub에서 파일 다운로드
+        file_content = download_csv_from_github(file_url)
 
         # 파일이 존재하는지 확인
-        if os.path.exists(file_path):
-            with open(file_path, 'rb') as f:
-                result = chardet.detect(f.read())
-                encoding = result['encoding']
-
+        if file_content:
+            # 인코딩 감지 및 CSV 읽기
+            encoding = detect_encoding(file_content)
             try:
-                # CSV 파일 읽기
-                month_df = pd.read_csv(file_path, encoding=encoding)
-                month_df = month_df.drop(columns=['no'])
+                csv_data = io.BytesIO(file_content)  # BytesIO로 변환하여 처리
+                month_df = pd.read_csv(csv_data, encoding=encoding)
 
-            # 데이터가 있으면 리스트에 추가
+                # 'no' 칼럼이 있으면 제거
+                if 'no' in month_df.columns:
+                    month_df = month_df.drop(columns=['no'])
+
+                # 데이터가 있으면 리스트에 추가
                 if not month_df.empty:
                     df_list.append(month_df)
+
             except Exception as e:
-                print(f"Error reading {file_path}: {e}")
+                print(f"Error reading {file_url}: {e}")
         else:
             print(f"No data found for {year}-{month:02d}")
 
@@ -82,7 +106,7 @@ def download_csv():
     else:
         return "No data found for the specified period or station code.", 404
 
-
+    # CSV 데이터를 바로 ByteIO에 저장하여 사용자에게 반환
     output = io.BytesIO()
     combined_df.to_csv(output, index=False, encoding='euc-kr')
     output.seek(0)
@@ -91,11 +115,6 @@ def download_csv():
                      mimetype='text/csv',
                      as_attachment=True,
                      download_name=f'{station_code}_{start_date.strftime("%Y%m%d")}_{end_date.strftime("%Y%m%d")}.csv')
-
-
-
-# http://localhost:5000/download?start_date=<START_DATE>&end_date=<END_DATE>&station_code=<STATION_CODE>
-# AgriWeather?start_date=20231004&end_date=20240929&station_code=477802A001
 
 if __name__ == '__main__':
     app.run(debug=True)

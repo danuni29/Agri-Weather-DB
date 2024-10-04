@@ -1,2 +1,2 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
-273,063501F011,,2016-09-30,23.3,28.7,20.6,90.6,45.2,1.4,4.6,13.0,,10.1,,,,,2016,9,30
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+273,063501F011,서귀포 대정읍,2016-09-30,23.3,28.7,20.6,90.6,45.2,1.4,4.6,13.0,,10.1,,,,,2016,9,30

@@ -1,4 +1,4 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
 335,5798240.0,부안군 계화면,2015-12-01,5.2,12.2,0.2,87.7,94.0,1.2,3.6,0.0,,12.7,9,14.7,6.4,,2015,12,1
 336,5798240.0,,2015-12-02,9.1,12.9,4.9,86.8,281.9,4.0,34.9,5.5,,1.4,82,14.6,7.5,,2015,12,2
 337,5798240.0,부안군 계화면,2015-12-03,5.5,8.1,1.7,67.2,275.5,9.3,18.9,2.0,,5.5,131,14.7,5.6,,2015,12,3

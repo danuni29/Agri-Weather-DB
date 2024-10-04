@@ -1,5 +1,5 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
-335,269811A001,,2016-12-01,3.4,7.2,-3.8,54.8,211.8,4.6,14.6,0.0,,10.5,0.0,2.3,5.1,,2016,12,1
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+335,269811A001,철원군 동송읍,2016-12-01,3.4,7.2,-3.8,54.8,211.8,4.6,14.6,0.0,,10.5,0.0,2.3,5.1,,2016,12,1
 336,269811A001,철원군 동송읍,2016-12-02,-1.5,5.8,-7.2,72.5,192.8,0.9,7.8,0.0,,11.1,0.0,-0.1,5.0,,2016,12,2
 337,269811A001,철원군 동송읍,2016-12-03,1.8,9.2,-3.6,80.1,31.2,0.3,2.6,0.0,,8.6,0.0,2.0,4.7,,2016,12,3
 338,269811A001,철원군 동송읍,2016-12-04,1.4,5.9,-3.3,86.9,274.5,0.7,3.4,0.0,,2.6,0.0,2.0,4.9,,2016,12,4

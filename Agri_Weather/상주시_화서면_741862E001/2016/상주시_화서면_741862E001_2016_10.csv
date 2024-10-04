@@ -1,4 +1,4 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
 274,7418620.0,상주시 화서면,2016-10-01,15.7,18.7,12.6,93.1,,,,2.5,4,6.8,675,,,,2016,10,1
 275,7418620.0,상주시 화서면,2016-10-02,18.6,21.2,15.4,87.2,,,,0.7,2,7.2,400,,,,2016,10,2
 276,7418620.0,상주시 화서면,2016-10-03,20.7,26.7,17.2,91.2,,,,25.7,85,7.7,622,,,,2016,10,3

@@ -1,5 +1,5 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
-244,330846A001,,2017-09-01,20.0,27.4,13.4,71.5,103.9,0.3,3.3,0.0,,,,21.4,24.4,,2017,9,1
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+244,330846A001,천안시 목천읍,2017-09-01,20.0,27.4,13.4,71.5,103.9,0.3,3.3,0.0,,,,21.4,24.4,,2017,9,1
 245,330846A001,천안시 목천읍,2017-09-02,19.8,26.6,14.3,76.5,94.4,0.2,3.4,0.0,,,,20.8,24.4,,2017,9,2
 246,330846A001,천안시 목천읍,2017-09-03,20.2,28.6,13.5,74.7,87.8,0.3,4.3,0.0,,,,21.3,24.5,,2017,9,3
 247,330846A001,천안시 목천읍,2017-09-04,20.3,27.8,13.9,70.8,90.3,0.3,4.1,0.0,,,,21.2,24.4,,2017,9,4

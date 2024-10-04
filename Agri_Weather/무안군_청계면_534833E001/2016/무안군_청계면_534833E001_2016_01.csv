@@ -1,4 +1,4 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
 1,5348330.0,,2016-01-01,3.4,9.0,-1.5,87.0,288.4,0.3,3.1,0.0,258.0,7.8,,3.1,5.6,5.0,2016,1,1
 2,5348330.0,,2016-01-02,6.6,13.3,1.2,86.5,45.4,0.5,3.3,0.0,190.0,6.3,,5.2,6.3,5.0,2016,1,2
 3,5348330.0,무안군 청계면,2016-01-03,7.0,14.4,2.7,93.2,294.6,0.3,10.2,0.0,356.0,9.5,,6.3,7.1,5.0,2016,1,3

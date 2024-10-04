@@ -1,4 +1,4 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
 152,4.86831e+16,,2015-06-01,18.6,27.5,8.6,60.2,232.8,1.2,8.0,0.0,640,25.4,,,24.6,,2015,6,1
 153,4.86831e+16,,2015-06-02,20.2,29.4,10.8,61.2,227.6,1.3,7.0,0.0,668,27.7,,,25.1,,2015,6,2
 154,4.86831e+16,,2015-06-03,20.0,28.5,11.3,52.4,221.7,1.0,9.7,0.0,772,29.8,,,26.0,,2015,6,3

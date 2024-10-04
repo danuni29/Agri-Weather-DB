@@ -1,4 +1,4 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
 32,7418620.0,상주시 화서면,2012-02-01,-10.2,-4.2,-13.5,66.5,,,,5.0,519,39.0,10,,,,2012,2,1
 33,7418620.0,,2012-02-02,-14.6,-10.4,-18.2,55.2,,,,0.0,519,39.6,0,,,,2012,2,2
 34,7418620.0,,2012-02-03,-12.1,-5.7,-20.9,68.5,,,,0.0,519,38.6,0,,,,2012,2,3

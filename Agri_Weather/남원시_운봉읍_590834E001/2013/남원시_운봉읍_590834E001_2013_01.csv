@@ -1,4 +1,4 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
 1,5908340.0,남원시 운봉읍,2013-01-01,-4.1,0.0,-13.1,87.0,,0.0,10.6,0.4,3.0,1.8,1411,,,,2013,1,1
 2,5908340.0,남원시 운봉읍,2013-01-02,-7.2,-1.0,-14.8,75.7,,0.0,9.9,0.0,455.0,4.7,1398,,,,2013,1,2
 3,5908340.0,남원시 운봉읍,2013-01-03,-11.7,-6.8,-16.3,63.3,,0.0,7.0,0.0,511.0,5.8,318,,,,2013,1,3

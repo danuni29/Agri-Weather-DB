@@ -1,5 +1,5 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
-32,535873B003,,2015-02-01,-3.1,5.0,-9.8,71.1,110.9,0.8,5.3,0.5,,16.5,0,,1.9,,2015,2,1
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+32,535873B003,나주시 산포면,2015-02-01,-3.1,5.0,-9.8,71.1,110.9,0.8,5.3,0.5,,16.5,0,,1.9,,2015,2,1
 33,535873B003,나주시 산포면,2015-02-02,-0.3,7.9,-4.8,71.5,112.4,0.6,4.3,0.0,,14.3,0,,2.1,,2015,2,2
 34,535873B003,나주시 산포면,2015-02-03,-1.1,7.7,-7.3,75.3,112.4,0.7,5.8,0.0,,12.7,31,,2.2,,2015,2,3
 35,535873B003,나주시 산포면,2015-02-04,-0.7,5.0,-5.3,85.2,112.4,0.9,6.5,0.0,,6.6,0,,2.2,,2015,2,4

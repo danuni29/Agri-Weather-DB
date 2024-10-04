@@ -1,4 +1,4 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
 244,2508450.0,,2011-09-01,20.1,28.1,14.7,74.7,264.4,0.9,,0.0,,39.8,10,,23.9,,2011,9,1
 245,2508450.0,,2011-09-02,18.1,24.7,13.2,79.7,95.3,1.1,,0.0,,35.8,10,,21.0,,2011,9,2
 246,2508450.0,,2011-09-03,18.7,21.2,16.9,70.1,95.2,2.2,,0.0,,37.2,10,,19.2,,2011,9,3

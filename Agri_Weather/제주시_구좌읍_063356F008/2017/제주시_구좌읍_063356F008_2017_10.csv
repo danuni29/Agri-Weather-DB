@@ -1,5 +1,5 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
-274,063356F008,,2017-10-01,20.3,22.6,17.2,89.6,180.8,1.5,12.8,52.0,,1.8,,,,,2017,10,1
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+274,063356F008,제주시 구좌읍,2017-10-01,20.3,22.6,17.2,89.6,180.8,1.5,12.8,52.0,,1.8,,,,,2017,10,1
 275,063356F008,제주시 구좌읍,2017-10-02,21.6,25.3,19.6,98.1,290.4,0.9,9.2,81.5,,5.7,,,,,2017,10,2
 276,063356F008,제주시 구좌읍,2017-10-03,20.3,23.9,17.0,87.1,322.4,0.7,4.6,0.0,,16.8,,,,,2017,10,3
 277,063356F008,제주시 구좌읍,2017-10-04,19.0,21.6,15.9,81.7,307.5,0.4,6.7,0.0,,4.2,,,,,2017,10,4

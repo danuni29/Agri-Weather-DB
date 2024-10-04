@@ -1,4 +1,4 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
 305,7668510.0,영덕군 병곡면,2015-11-01,8.0,13.5,0.2,54.5,,,,0.0,147,6.4,0.0,,12.7,14.0,2015,11,1
 306,7668510.0,영덕군 병곡면,2015-11-02,12.9,17.6,8.7,38.8,,,,0.0,558,13.6,0.0,,13.5,14.1,2015,11,2
 307,7668510.0,영덕군 병곡면,2015-11-03,12.5,18.9,4.3,59.8,,,,0.0,569,13.8,254.0,,14.1,14.0,2015,11,3

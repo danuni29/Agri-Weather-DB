@@ -1,4 +1,4 @@
-﻿no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
+no,stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt,year,month,day
 335,5348330.0,무안군 청계면,2015-12-01,6.2,14.7,0.0,84.3,29.5,0.1,2.7,0.0,516.0,11.8,,6.0,9.4,5.0,2015,12,1
 336,5348330.0,무안군 청계면,2015-12-02,9.5,13.6,4.9,87.1,310.9,0.7,6.9,5.0,0.0,1.1,,7.7,9.5,5.0,2015,12,2
 337,5348330.0,무안군 청계면,2015-12-03,6.3,8.8,3.2,61.5,274.0,2.7,17.2,0.5,160.0,6.9,,5.1,8.7,5.0,2015,12,3
