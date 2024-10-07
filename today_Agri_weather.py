@@ -24,8 +24,8 @@ def main():
         params = {
             'Page_No': 1,
             'Page_Size': 10,
-            'begin_Date': now_date,
-            'end_Date': now_date,
+            'begin_Date': '2024-10-01',
+            'end_Date': '2024-10-06',
             'obsr_Spot_Code': code,
         }
 
@@ -82,7 +82,7 @@ def main():
             combined_df = pd.concat([existing_df, station_df], ignore_index=True)
 
             # 중복된 행 제거
-            combined_df = combined_df.drop_duplicates()
+            combined_df = combined_df.drop_duplicates(subset=['date'], keep='first')
             print(f'중복 행 제거 후 데이터 결합 완료: {full_path}')
             print(combined_df)
         else:
