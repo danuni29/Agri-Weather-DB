@@ -1,11 +1,10 @@
 from flask import Flask, request, send_file
 import io
 import pandas as pd
-import os
 from datetime import datetime
 import chardet
 import requests
-from io import StringIO
+
 
 
 app = Flask(__name__)
@@ -24,9 +23,11 @@ def download_csv_from_github(file_url):
 
 @app.route('/AgriWeather', methods=['GET'])
 def download_csv():
+    info_data = pd.read_csv('./obsr_spot_info.csv', encoding='euc-kr', header=1)
+
     # 파라미터 받아오기
     start_date = str(request.args.get('start_date'))  # ex. 20241004
-    end_date = str(request.args.get('end_date'))  # ex. 20241004
+    end_date = str(request.args.get('end_date'))  # ex. 20240914
     station_code = request.args.get('station_code')  # ex. 477802A001
 
     # 날짜를 datetime 객체로 변환
@@ -36,27 +37,12 @@ def download_csv():
     df_list = []
 
     # GitHub에서 CSV 파일을 다운로드할 base URL
-    base_url = 'https://raw.githubusercontent.com/danuni29/Agri-Weather-DB/refs/heads/master/Agri_Weather'
+    base_url = 'https://raw.githubusercontent.com/danuni29/Agri-Weather-DB/master/Agri_Weather'
 
-    # GitHub에서 station_code를 포함하는 폴더 찾기 (로컬 방식과 유사하게)
-    response = requests.get(base_url)  # 전체 Agri_Weather 폴더 목록을 가져옴
-    print(response)
-    if response.status_code != 200:
-        return "Failed to fetch the folder list from GitHub.", 500
+    region = info_data[info_data['지점코드'] == station_code]['지점명'].values[0]
+    region = region.replace(" ", "_")
 
-    # 응답 데이터에서 폴더를 추출해야 하는데, 여기서는 HTML에서 station_code가 포함된 폴더를 찾음
-    folders = response.text.splitlines()  # GitHub의 응답을 단순히 라인으로 나눔
-    target_folder_name = None
-
-    # station_code를 포함한 폴더를 찾는 로직
-    for folder_name in folders:
-        if station_code in folder_name:
-            target_folder_name = folder_name
-            break
-
-    if target_folder_name is None:
-        return "지역코드가 존재하지 않습니다.", 404
-
+    target_folder_name = f"{region}_{station_code}"
     target_folder_url = f"{base_url}/{target_folder_name}"
 
     # 시작 연도부터 끝 연도까지 반복하면서 필요한 데이터만 읽기
@@ -65,7 +51,7 @@ def download_csv():
         year = current_date.year
         month = current_date.month
 
-        # 파일 경로 예시: Agri_Weather/가평군_가평읍_477802A001/2011/가평군_가평읍_477802A001_2011_05.csv
+        # 파일 경로 예시: Agri_Weather/가평군_가평읍_477802A001/2024/가평군_가평읍_477802A001_2024_09.csv
         file_name = f'{target_folder_name}_{year}_{month:02d}.csv'
         file_url = f"{target_folder_url}/{year}/{file_name}"
         print(f"Downloading {file_url}")
@@ -84,6 +70,15 @@ def download_csv():
                 # 'no' 칼럼이 있으면 제거
                 if 'no' in month_df.columns:
                     month_df = month_df.drop(columns=['no'])
+
+                # 날짜 컬럼이 있는지 확인 (여기서는 'date'로 가정)
+                if 'date' in month_df.columns:
+                    # print(month_df)
+                    month_df['date'] = pd.to_datetime(month_df['date'], format='%Y-%m-%d')
+
+                    # 마지막 달인 경우 end_date를 기준으로 필터링
+                    if year == end_date.year and month == end_date.month:
+                        month_df = month_df[month_df['date'] <= end_date]
 
                 # 데이터가 있으면 리스트에 추가
                 if not month_df.empty:
@@ -115,6 +110,7 @@ def download_csv():
                      mimetype='text/csv',
                      as_attachment=True,
                      download_name=f'{station_code}_{start_date.strftime("%Y%m%d")}_{end_date.strftime("%Y%m%d")}.csv')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

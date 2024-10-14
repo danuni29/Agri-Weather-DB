@@ -25,7 +25,7 @@ def main():
             'Page_No': 1,
             'Page_Size': 10,
             'begin_Date': '2024-10-01',
-            'end_Date': '2024-10-06',
+            'end_Date': '2024-10-13',
             'obsr_Spot_Code': code,
         }
 

@@ -1,7 +1,11 @@
 import os
 import pandas as pd
 import chardet
+import requests
+from io import StringIO
 
+
+url = 'https://raw.githubusercontent.com/danuni29/Agri-Weather-DB/refs/heads/master/Agri_Weather/가평군_가평읍_477802A001/2011/가평군_가평읍_477802A001_2011_05.csv'
 
 def detect_encoding(file_path):
     with open(file_path, 'rb') as f:
@@ -14,6 +18,7 @@ def detect_encoding(file_path):
 
 def main():
     base_dir = './Agri_Weather'
+
 
 
     for region_folder in os.listdir(base_dir):

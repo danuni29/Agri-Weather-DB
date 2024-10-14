@@ -16,10 +16,5 @@ COPY . .
 # Flask API가 실행될 포트 설정 (Flask 기본 포트는 5000)
 EXPOSE 5000
 
-# 환경변수 설정 (Flask가 호스트로 접근 가능하도록)
-ENV FLASK_ENV=production
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-
-# 컨테이너 실행 시 Flask API 실행
-CMD ["flask", "run"]
+# Gunicorn을 사용하여 애플리케이션 실행
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
