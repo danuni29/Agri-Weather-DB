@@ -1,5 +1,3 @@
-name: Update Weather Data
-
 on:
   schedule:
     - cron: '*/10 * * * *'
@@ -29,14 +27,13 @@ jobs:
       env:
         MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 
-    - name: Commit and push changes
+    - name: Pull remote changes
+      run: git pull --rebase origin master
 
+    - name: Commit and push changes
       run: |
-    
         git config --global user.name "danuni29"
         git config --global user.email "hekdms@jbnu.ac.kr"
         git add ./Agri_Weather/*.csv
         git commit -m "Update Weather Data - $(TZ='Asia/Seoul' date +'%Y-%m-%d')"
         git push
-
-
