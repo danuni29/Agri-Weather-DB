@@ -24,7 +24,7 @@ def main():
         params = {
             'Page_No': 1,
             'Page_Size': 10,
-            'begin_Date': '2024-10-01',
+            'begin_Date': '2024-10-11',
             'end_Date': '2024-10-13',
             'obsr_Spot_Code': code,
         }
