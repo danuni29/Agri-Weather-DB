@@ -4,8 +4,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: gunicorn -w 4 -b 0.0.0.0:5000 app:app
     ports:
-      - "6100:5000"
+      - 5000:5000
     environment:
       - FLASK_ENV=production
       - FLASK_APP=app.py

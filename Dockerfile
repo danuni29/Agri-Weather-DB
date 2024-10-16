@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Flask API가 실행될 포트 설정 (Flask 기본 포트는 5000)
-EXPOSE 5000
+#EXPOSE 5000
 
 # Gunicorn을 사용하여 애플리케이션 실행
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
+#CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
