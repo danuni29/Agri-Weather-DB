@@ -1,2 +1,3 @@
 stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt
 456871A001,안성시 보개면,2024-10-31,13.9,22.6,8.6,77.5,32.3,0.1,5.5,0.0,546.0,11.4,,,16.4,
+456871A001,안성시 보개면,2024-11-01,13.3,16.5,10.3,82.1,338.8,0.7,3.5,0.0,0.0,3.3,,,16.3,

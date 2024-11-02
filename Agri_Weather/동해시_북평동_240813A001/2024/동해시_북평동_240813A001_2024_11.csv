@@ -1,2 +1,3 @@
 stn_Code,stn_Name,date,temp,max_Temp,min_Temp,hum,widdir,wind,max_Wind,rain,sun_Time,sun_Qy,condens_Time,gr_Temp,soil_Temp,soil_Wt
 240813A001,동해시 북평동,2024-10-31,15.2,22.5,9.6,83.8,165.3,0.9,5.5,0.0,499.0,12.8,0.0,14.1,,23.8
+240813A001,동해시 북평동,2024-11-01,15.0,17.8,12.6,83.0,220.7,0.6,3.1,0.0,0.0,2.2,0.0,13.6,,23.1
