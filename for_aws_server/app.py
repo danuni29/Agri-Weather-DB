@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query, HTTPException
+from fastapi import FastAPI, Query, HTTPException, Request
 from fastapi.responses import StreamingResponse, HTMLResponse
 import io
 import pandas as pd
@@ -7,6 +7,7 @@ import chardet
 import requests
 import os
 from urllib.parse import quote
+import uvicorn
 
 app = FastAPI()
 
@@ -26,9 +27,10 @@ def download_csv_from_github(file_url):
         return None
 
 
-def generate_html_response(combined_df):
-    # CSS 스타일 추가
-    html_content = f"""
+
+def generate_html_table(dataframe: pd.DataFrame, table_caption: str = "Table") -> str:
+
+    return f"""
     <html>
     <head>
         <style>
@@ -46,6 +48,7 @@ def generate_html_response(combined_df):
             th {{
                 background-color: #4CAF50;
                 color: white;
+                text-align: center; /* 헤더 가운데 정렬 */
             }}
             tr:nth-child(even) {{
                 background-color: #f2f2f2;
@@ -62,17 +65,28 @@ def generate_html_response(combined_df):
     </head>
     <body>
         <table>
-            <caption>Data Table</caption>
-            {combined_df.to_html(index=False, border=0)}
+            <caption>{table_caption}</caption>
+            {dataframe.to_html(index=False, border=0, escape=False)}
         </table>
     </body>
     </html>
     """
-    return HTMLResponse(content=html_content)
+
+    # return HTMLResponse(content=html_content)
+@app.get("/", response_class=HTMLResponse)
+async def read_csv(request: Request):
+    # 서버에 저장된 CSV 파일 읽기
+    csv_path = "./region_info.csv"  # CSV 파일 경로
+    df = pd.read_csv(csv_path, encoding='euc-kr')
+
+    # DataFrame을 HTML 테이블로 변환
+    table_html = generate_html_table(df, table_caption="Region Information")
 
 
+    # HTML로 렌더링
+    return HTMLResponse(content=table_html)
 
-@app.get("/")
+@app.get("/weather")
 def download_data(
     start_date: str,
     end_date: str,
@@ -90,10 +104,10 @@ def download_data(
     df_list = []
 
     # 지점명 설정
-    station_code_data = info_data[info_data['input_region'] == region]['지점코드']
+    station_code_data = info_data[info_data['변환 지점명'] == region]['지점코드']
     station_code = station_code_data.values[0]
 
-    real_region_data = info_data[info_data['input_region'] == region]['지점명']
+    real_region_data = info_data[info_data['변환 지점명'] == region]['지점명']
     real_region = real_region_data.values[0].replace(" ", "_")
     # region_formatted = region.replace(" ", "_")
 
@@ -113,7 +127,7 @@ def download_data(
         if os.path.exists(file_path):
             try:
                 # CSV 파일 읽기
-                year_df = pd.read_csv(file_path, encoding='utf-8-sig')
+                year_df = pd.read_csv(file_path, encoding=detect_encoding(file_path))
 
                 # 'no' 칼럼이 있으면 제거
                 if 'no' in year_df.columns:
@@ -148,7 +162,7 @@ def download_data(
     if format.lower() == "csv":
         # CSV 데이터를 ByteIO에 저장하여 반환
         output = io.BytesIO()
-        combined_df.to_csv(output, index=False, encoding='utf-8-sig')
+        combined_df.to_csv(output, index=False, encoding=detect_encoding(output))
         output.seek(0)
         output_filename = f"{region}_{start_date.strftime('%Y%m%d')}_{end_date.strftime('%Y%m%d')}.csv"
         encoded_filename = quote(output_filename)
@@ -245,4 +259,7 @@ def download_data(
 
     else:
         raise HTTPException(status_code=400, detail="Invalid format. Please choose 'csv' or 'html'.")
+
+# if __name__ == '__main__':
+    # uvicorn.run(app, host="127.0.0.1", port=8080)
 
